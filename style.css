@@ -1,3 +1,105 @@
+/* Base Page Styling */
 body {
     font: 100%/1.5 system-ui;
-}
+    max-width: 100ch;
+    margin-inline: max(1em, (100% - 100ch) / 2);
+    padding-inline: 20px;
+  }
+  
+  /* Accent Color */
+  :root {
+    --color-accent: oklch(0.46 0.1061 163);
+    accent-color: var(--color-accent);
+  }
+  
+  /* If you're actually using <em>, <rem>, or <ch> in your HTML */
+  em, rem, ch {
+    max-width: 100ch;
+  }
+  
+  /* Navigation */
+  nav {
+    display: flex;
+  }
+  
+  nav a {
+    flex: 1;
+    text-align: center;
+    padding: 0.4em;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  nav a.current {
+    border-bottom: 0.4em solid oklch(80% 3% 200);
+  }
+  
+  nav a:hover {
+    border-bottom: 0.4em solid var(--color-accent);
+    background-color: oklch(from var(--color-accent) 95% 5% h);
+  }
+  
+  /* Headings: make h1 bigger, tighten line-height on all headings */
+  h1 {
+    font-size: 400%; /* 4 times the base font size */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    text-wrap: balance; /* modern browsers only */
+  }
+  
+  /* Form Elements Inherit Font */
+  input,
+  textarea,
+  button {
+    font: inherit;
+  }
+  
+  /* Contact Form: 2-column grid for labels & fields */
+  form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    max-width: 40rem;
+    margin: 1rem auto;
+  }
+  
+  form label {
+    text-align: right;
+    align-self: center;
+  }
+  
+  form input,
+  form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+  }
+  
+  /* Form button spans both columns, aligned to the right */
+  form button {
+    grid-column: 1 / -1;
+    justify-self: end;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  /* Projects Layout (Step 4.2 in the lab) */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 1em;
+  }
+  
+  /* Optional: For subgrid alignment if you want each <article> 
+     to align headings, images, paragraphs across rows:
+     .projects article {
+       display: grid;
+       grid-template-rows: subgrid;
+       grid-row: span 3;
+     }
+  
+     Adjust or remove as needed.
+  */
+  

@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* A simple example to make the PDF iframe responsive. 
+       You can move this to your style.css if desired. */
+    .pdf-viewer {
+      width: 100%;       /* Fill the horizontal space */
+      height: 80vh;      /* Occupy 80% of the viewport height */
+      max-width: 100%;   /* Never exceed the container's width */
+      border: 1px solid #ccc; /* Optional visible frame */
+    }
+  </style>
 </head>
 <body>
-    <h1>ShouTai Yue's Resume</h1>
-    <iframe src = "ShouTai Yue's Resume - Google Docs.pdf" width="100%" height="800px">
-        <p>Your browser does not support iframes. 
-            <a href="ShouTai Yue's Resume - Google Docs.pdf">Click here to view the PDF</a>.
-         </p>
-    </iframe>
-    <br>
-    <p>Here are some links to other parts of the website</p>
-    <nav>
-        <a href = "../contact/index.html">Contacts</a>
-        <a href = "../projects/index.html">Projects</a>
-        <a href = "../resume/index.html">Resume</a>
-        <a href = "../index.html">Main</a>
-    </nav>
+  <!-- Navigation: only Resume is "current" on this page -->
+  <nav>
+    <a href="../index.html">Main</a>
+    <a href="../projects/index.html">Projects</a>
+    <a href="../resume/index.html" class="current">Resume</a>
+    <a href="../contact/index.html">Contacts</a>
+  </nav>
 
-    <br>
-    <p> Click Here for the Chinese Resume </p>
-    <nav>
-        <a href = "Resume Chinese - Google Docs.pdf">中文简历</a>
+  <h1>ShouTai Yue's Resume</h1>
+  
+  <!-- Responsive PDF iframe -->
+  <iframe
+    class="pdf-viewer"
+    src="ShouTai Yue's Resume - Google Docs.pdf"
+  >
+    <p>Your browser does not support iframes. 
+      <a href="ShouTai Yue's Resume - Google Docs.pdf">Click here to view the PDF</a>.
+    </p>
+  </iframe>
+
+  <p>Click here for the Chinese Resume:</p>
+  <nav>
+    <a href="Resume Chinese - Google Docs.pdf">中文简历</a>
+  </nav>
 </body>
 </html>
