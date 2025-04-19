@@ -72,26 +72,43 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+form {
+  display: flex;                 /* 💡 overrides the grid */
+  flex-direction: column;
+  gap: 1.25rem;                  /* same vertical spacing */
+  max-width: 40rem;
+  margin: 2rem auto;
+}
+
+/* labels sit above their controls, text left‑aligned */
+form label {
+  font-weight: 600;
+  text-align: left;
+  align-self: flex-start;
+}
+
+/* roomier fields that grow/shrink with viewport */
 form input,
 form textarea {
-  width: 100%;                        /* already had this */
+  width: 100%;
   box-sizing: border-box;
-  padding: clamp(0.75rem, 1.5vw, 1.25rem);  /* more padding on big screens */
-  font-size: clamp(1rem, 2.5vw, 1.25rem);   /* scales with viewport */
-  border-radius: 0.4rem;              /* optional: softer look */
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  border-radius: 0.4rem;
 }
 
-/* Give the textarea a flexible but sane height */
+/* give textarea a flexible default height */
 form textarea {
-  min-height: clamp(8rem, 30vh, 18rem); /* 8 rem on phones → up to 18 rem */
-  resize: vertical;                     /* let users drag taller if they want */
+  min-height: clamp(8rem, 30vh, 18rem);
+  resize: vertical;              /* allow user drag‑to‑grow */
 }
 
-/* Align button with fields (left‑edge) */
+/* Send button lines up with left edge of fields */
 form button {
-  align-self: flex-start;      /* left align */
+  align-self: flex-start;        /* left‑aligned */
   padding: 0.75rem 1.5rem;
   font-size: clamp(1rem, 2.5vw, 1.25rem);
+  cursor: pointer;
 }
 
 .projects {
