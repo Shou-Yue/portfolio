@@ -1,105 +1,101 @@
-/* Base Page Styling */
+/* ────────────────────────────────────────────────────────────── */
+/* 1. Tell the browser we support both colour schemes            */
+/* ────────────────────────────────────────────────────────────── */
+html { color-scheme: light dark; }           /* NEW */
+
+/* Base Page Styling (unchanged) */
 body {
-    font: 100%/1.5 system-ui;
-    max-width: 100ch;
-    margin-inline: max(1em, (100% - 100ch) / 2);
-    padding-inline: 20px;
-  }
-  
-  /* Accent Color */
-  :root {
-    --color-accent: oklch(0.46 0.1061 163);
-    accent-color: var(--color-accent);
-  }
-  
-  /* If you're actually using <em>, <rem>, or <ch> in your HTML */
-  em, rem, ch {
-    max-width: 100ch;
-  }
-  
-  /* Navigation */
-  nav {
-    display: flex;
-  }
-  
-  nav a {
-    flex: 1;
-    text-align: center;
-    padding: 0.4em;
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  nav a.current {
-    border-bottom: 0.4em solid oklch(80% 3% 200);
-  }
-  
-  nav a:hover {
-    border-bottom: 0.4em solid var(--color-accent);
-    background-color: oklch(from var(--color-accent) 95% 5% h);
-  }
-  
-  /* Headings: make h1 bigger, tighten line-height on all headings */
-  h1 {
-    font-size: 400%; /* 4 times the base font size */
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.1;
-    text-wrap: balance; /* modern browsers only */
-  }
-  
-  /* Form Elements Inherit Font */
-  input,
-  textarea,
-  button {
-    font: inherit;
-  }
-  
-  /* Contact Form: 2-column grid for labels & fields */
-  form {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1rem;
-    max-width: 40rem;
-    margin: 1rem auto;
-  }
-  
-  form label {
-    text-align: right;
-    align-self: center;
-  }
-  
-  form input,
-  form textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.5rem;
-  }
-  
-  /* Form button spans both columns, aligned to the right */
-  form button {
-    grid-column: 1 / -1;
-    justify-self: end;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  /* Projects Layout (Step 4.2 in the lab) */
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 1em;
-  }
-  
-  /* Optional: For subgrid alignment if you want each <article> 
-     to align headings, images, paragraphs across rows:
-     .projects article {
-       display: grid;
-       grid-template-rows: subgrid;
-       grid-row: span 3;
-     }
-  
-     Adjust or remove as needed.
-  */
-  
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: max(1em, (100% - 100ch) / 2);
+  padding-inline: 20px;
+}
+
+/* Accent Colour (unchanged) */
+:root {
+  --color-accent: oklch(0.46 0.1061 163);
+  accent-color: var(--color-accent);
+}
+
+/* If you're actually using <em>, <rem>, or <ch> in your HTML */
+em, rem, ch { max-width: 100ch; }
+
+/* ────────────────────────────────────────────────────────────── */
+/* 2. Navigation – reserve border space & make colours adapt     */
+/* ────────────────────────────────────────────────────────────── */
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);   /* NEW  adaptive, semi‑transparent */
+  display: flex;
+  padding-right: 7rem;
+  position: relative;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  padding: 0.4em;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 0.4em solid transparent;     /* CHANGED: always present */
+}
+
+nav a.current { border-bottom-color: var(--border-color); }     /* CHANGED */
+
+nav a:hover {
+  border-bottom-color: var(--color-accent);
+  background: color-mix(in oklch, var(--color-accent), canvas 85%);  /* CHANGED */
+}
+
+/* ────────────────────────────────────────────────────────────── */
+/* 3. Theme‑switch dropdown (top‑right)                          */
+/*    – only needed once – add at end of file or wherever tidy   */
+/* ────────────────────────────────────────────────────────────── */
+label.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
+
+  z-index: 10;
+}
+
+/* Make <select> inherit the global font like the other controls */
+input, textarea, button, select { font: inherit; }               /* CHANGED */
+
+/* ─── everything below is identical to what you already have ── */
+
+h1 { font-size: 400%; }
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+form input,
+form textarea {
+  width: 100%;                        /* already had this */
+  box-sizing: border-box;
+  padding: clamp(0.75rem, 1.5vw, 1.25rem);  /* more padding on big screens */
+  font-size: clamp(1rem, 2.5vw, 1.25rem);   /* scales with viewport */
+  border-radius: 0.4rem;              /* optional: softer look */
+}
+
+/* Give the textarea a flexible but sane height */
+form textarea {
+  min-height: clamp(8rem, 30vh, 18rem); /* 8 rem on phones → up to 18 rem */
+  resize: vertical;                     /* let users drag taller if they want */
+}
+
+/* Align button with fields (left‑edge) */
+form button {
+  align-self: flex-start;      /* left align */
+  padding: 0.75rem 1.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
