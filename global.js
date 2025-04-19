@@ -10,9 +10,10 @@ const pages = [
 ];
 
 const LOCAL_HOSTS = ["localhost", "127.0.0.1"];
+const repo = location.pathname.split("/")[1] || "";
 const BASE_PATH = LOCAL_HOSTS.includes(location.hostname)
   ? "/"
-  : "/portfolio/";
+  : `/${repo}/`;
 
 const cleanPath = (p) =>
   p.replace(/\/index\.html$/, "/").replace(/^\/?/, "/");
