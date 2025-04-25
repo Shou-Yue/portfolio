@@ -116,3 +116,9 @@ form button {
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
 }
+
+img {
+  max-width: 100%;    /* Scale the image to fit the container */
+  height: auto;       /* Maintain aspect ratio */
+  display: block;     /* Remove any bottom space (for inline images) */
+}
