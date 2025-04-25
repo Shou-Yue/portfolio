@@ -2,19 +2,19 @@
     {
       "title": "Recipe Rating Prediction",
       "year": "2024",
-      "image": "../images/recipe.jpg",
+      "image": "/images/recipe.jpg",
       "description": "This is a project to explore various trends in food data as well as implementing a random forest to attempt at predicting recipe ratings"
     },
     {
       "title": "Classic ML Model Implementations",
       "year": "2024",
-      "image": "../images/Models.jpg",
+      "image": "/images/Models.jpg",
       "description": "This projects aims at recreating the implementation of various common and useful machine model algerithms, it was created as a part of the undergraduate Data Mining course at UCSD"
     },
     {
       "title": "Vigorous W Company Website",
       "year": "2023",
-      "image": "../images/Company.jpg",
+      "image": "/images/Company.jpg",
       "description": "Helped develop company website using CSS, HTML, and JS techniques as a part of a web-development internship"
     },
     {
