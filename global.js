@@ -48,7 +48,7 @@ export async function fetchGitHubData(username) {
       throw new Error('Failed to fetch GitHub data');
     }
     const data = await response.json();
-    return data;  // Returns the JSON data for the user
+    return data;
   } catch (error) {
     console.error(error);
   }
