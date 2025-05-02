@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Projects</title>
   <link rel="stylesheet" href="../style.css" />
+  <style>
+    #projects-pie-plot{
+      max-width: 20em ;
+      margin-block: 2em;
+      overflow: visible;
+    }
+  </style>
   <script type="module" src="../global.js"></script>
 </head>
+
 <body>
+  
   <h1>Here are some of my Projects</h1>
+
+  <div class="chart-wrap">
+    <svg id="projects-pie-plot" viewBox="-50 -50 100 100"></svg>
+    <ul class="legend"></ul>
+  </div>
+
+  <input
+  class="searchBar"
+  type="search"
+  aria-label="Search projects"
+  placeholder="Search Projects..."
+  />
 
   <h2 class="projects-title">Projects</h2>
 
@@ -16,4 +38,5 @@
 
   <script type="module" src="projects.js"></script>
 </body>
+
 </html>
