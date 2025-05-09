@@ -1,7 +1,11 @@
-/* colour‑scheme support */
+/* ============================================================ */
+/* 1.  Global colour-scheme support                             */
+/* ============================================================ */
 html { color-scheme: light dark; }
 
-/* base layout */
+/* ============================================================ */
+/* 2.  Base layout & typography                                 */
+/* ============================================================ */
 body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
@@ -9,7 +13,6 @@ body {
   padding-inline: 20px;
 }
 
-/* accent */
 :root {
   --color-accent: oklch(0.46 0.1061 163);
   accent-color: var(--color-accent);
@@ -17,7 +20,9 @@ body {
 
 em, rem, ch { max-width: 100ch; }
 
-/* navigation */
+/* ============================================================ */
+/* 3.  Navigation bar                                           */
+/* ============================================================ */
 nav {
   --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
@@ -41,7 +46,7 @@ nav a:hover {
   background: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
-/* theme‑switch */
+/* theme-switch control */
 label.color-scheme {
   position: absolute;
   top: 1rem;
@@ -52,11 +57,15 @@ label.color-scheme {
 
 input, textarea, button, select { font: inherit; }
 
-/* headings */
+/* ============================================================ */
+/* 4.  Headings & text                                          */
+/* ============================================================ */
 h1 { font-size: 400%; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.1; text-wrap: balance; }
 
-/* form */
+/* ============================================================ */
+/* 5.  Contact form                                             */
+/* ============================================================ */
 form {
   display: flex;
   flex-direction: column;
@@ -81,7 +90,9 @@ form button {
   cursor: pointer;
 }
 
-/* project grid */
+/* ============================================================ */
+/* 6.  Projects grid                                            */
+/* ============================================================ */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -90,7 +101,9 @@ form button {
 
 img { max-width: 100%; height: auto; display: block; }
 
-/* pie + legend layout */
+/* ============================================================ */
+/* 7.  Pie-chart + legend                                       */
+/* ============================================================ */
 .chart-wrap {
   display: flex;
   align-items: center;
@@ -128,8 +141,96 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color);
 }
 
-/* pie interactivity (step 5) */
+/* pie interactivity */
 #projects-pie-plot path { cursor: pointer; transition: 300ms; }
 #projects-pie-plot:has(path:hover) path:not(:hover) { opacity: 0.5; }
 .selected { --color: #d78f00 !important; }
 .selected:is(path) { fill: var(--color); }
+
+/* ------------------------------------------------------------- */
+/*  summary panel (meta page)                                    */
+/* ------------------------------------------------------------- */
+
+.stats-wrap {               /* container around the <dl>        */
+  margin-block: 2.5rem;
+}
+
+.stats-wrap h2 {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.4rem, 2vw + 1rem, 1.9rem);
+}
+
+.stats {                    /* the <dl> – a responsive row      */
+  display: flex;
+  flex-wrap: wrap;          /* wrap when not enough width       */
+  gap: 2.5rem 1.75rem;      /* row gap 2.5rem, col gap 1.75rem  */
+}
+
+/* ---------- labels ------------------------------------------ */
+.stats dt {
+  font: 600 0.72rem/1 system-ui;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--stats-muted, color-mix(in srgb,
+           currentColor 40%, transparent));
+  margin: 0;
+}
+
+/* ---------- numbers ----------------------------------------- */
+.stats dd {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw + 1rem, 3.2rem);
+  line-height: 1;
+}
+
+/* automatic colour-scheme support (you already set `color-scheme`) */
+@media (prefers-color-scheme: dark) {
+  :root { --stats-muted: color-mix(in srgb, currentColor 70%, transparent); }
+}
+@media (prefers-color-scheme: light) {
+  :root { --stats-muted: color-mix(in srgb, currentColor 45%, transparent); }
+}
+
+/* ─── tooltip for scatterplot ────────────────────────────── */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.1rem 0.75rem;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em; left: 1em;
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, canvas 85%, transparent);
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / .15);
+  transition: opacity 300ms, visibility 300ms;
+}
+
+.tooltip[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* dot hover grow */
+circle {
+  transition: 200ms transform;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+circle:hover { transform: scale(1.5); }
+
+#language-breakdown{
+  display:grid;                 /* 2-column grid              */
+  grid-template-columns:auto 1fr;
+  gap:1rem .75rem;            /* row gap / col gap          */
+  margin-block:1.25rem;
+}
+
+#language-breakdown dt{font-weight:600}
+#language-breakdown dd{margin:0}
