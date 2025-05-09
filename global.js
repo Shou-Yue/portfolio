@@ -8,7 +8,6 @@ const pages = [
   { url: "resume/",    title: "Resume"   },
   { url: "contact/",   title: "Contact"  },
   { url: "meta/",      title: "Meta"},
-  
 ];
 
 export async function fetchJSON(url) {
