@@ -20,7 +20,7 @@
     {
       "title": "Bikewatching in Boston",
       "year": "2024",
-      "image": "://images/Bikewatching.png",
+      "image": "https://shou-yue.github.io/portfolio/images/Bikewatching.png",
       "description": "Interactive Visual made with data from Mapbox, Bluebike, the City of Boston, and Cambridge"
     }
   ]
