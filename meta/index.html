@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Meta</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css">
   <script type="module" src="../global.js"></script>
-  <!-- reuse the shared stylesheet -->
-  <link rel="stylesheet" href="../style.css" />
 </head>
-
 <body>
   <main>
     <h1>Meta</h1>
-    <p>This page shows a summary of the data for the page</p>
-    <!-- stats will be injected here -->
+
     <div id="stats"></div>
-    <br>
 
-    <h2>Commits by time of day</h2>
-<div id="chart"></div>
+    <!-- ❶ scatter-plot scrolly -->
+    <div id="scrolly-1">
+      <div id="scatter-story"></div>
 
-<h2 id="selection-count">No commits selected, Click and Drag to Highlight</h2>
-<dl id="language-breakdown" class="stats"></dl>
+      <div id="scatter-plot">
+        <h2>Commits by time of day</h2>
+        <div id="chart"></div>
+        <h2 id="selection-count">All commits selected — drag to highlight</h2>
+        <dl id="language-breakdown" class="stats"></dl>
+      </div>
+    </div>
 
-<dl id="commit-tooltip" class="info tooltip" hidden>
-  <dt>Commit</dt><dd><a id="commit-link" target="_blank"></a></dd>
-  <dt>Date</dt><dd id="commit-date"></dd>
-  <dt>Time</dt><dd id="commit-time"></dd>
-  <dt>Author</dt><dd id="commit-author"></dd>
-  <dt>Lines edited</dt><dd id="commit-lines"></dd>
-</dl>
+    <!-- ❷ file-size scrolly -->
+    <div id="scrolly-2">
+      <div id="files-story"></div>
+      <div id="files-viz">
+        <dl id="files"></dl>
+      </div>
+    </div>
 
+    <!-- tooltip -->
+    <dl id="commit-tooltip" class="info tooltip" hidden>
+      <dt>Commit</dt><dd><a id="commit-link" target="_blank"></a></dd>
+      <dt>Date</dt><dd id="commit-date"></dd>
+      <dt>Time</dt><dd id="commit-time"></dd>
+      <dt>Author</dt><dd id="commit-author"></dd>
+      <dt>Lines edited</dt><dd id="commit-lines"></dd>
+    </dl>
   </main>
 
-  <!-- analysis / rendering logic -->
   <script type="module" src="main.js"></script>
 </body>
 </html>
