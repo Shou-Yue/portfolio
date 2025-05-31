@@ -80,7 +80,7 @@ function tooltip (c){
 /* ─── banner + language helpers ───────────────────────────── */
 function renderSelectionCount (sel, selected, universe) {
   let txt
-  if (!sel)           txt = 'All commits selected, click and drag for specific onces'
+  if (!sel)           txt = 'All commits selected, click and drag for specific ones'
   else if (selected.length)
                       txt = `${selected.length} commit${selected.length>1?'s':''} selected`
   else                txt = 'No commits selected'
